@@ -1,5 +1,7 @@
 backend:
-  name: test-repo
+  name: github
+  repo: copmany/gatsby-netlify-example
+  branch: master
 
 media_folder: static/assets
 public_folder: assets

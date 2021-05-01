@@ -2,24 +2,20 @@ backend:
   name: github
   repo: copmany/gatsby-netlify-example
   branch: master
+  commit_messages:
+    create: "Create {{collection}} “{{slug}}”"
+    update: "Update {{collection}} “{{slug}}”"
+    delete: "Delete {{collection}} “{{slug}}”"
+    uploadMedia: "[skip ci] Upload “{{path}}”"
+    deleteMedia: "[skip ci] Delete “{{path}}”"
 
-media_folder: static/assets
-public_folder: assets
+media_folder: static/img
+public_folder: /img
 
 collections:
-  - name: blog
-    label: Blog
-    folder: blog
-    create: true
-    fields:
-      - { name: path, label: Path }
-      - { name: date, label: Date, widget: datetime }
-      - { name: title, label: Title }
-      - { name: body, label: Body, widget: markdown }
-
   - name: product
     label: product
-    folder: product
+    folder: src/pages/products-items
     create: true
     fields:
       - { name: path, label: Path }

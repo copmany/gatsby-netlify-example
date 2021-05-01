@@ -15,7 +15,7 @@ public_folder: /img
 collections:
   - name: product
     label: product
-    folder: src/pages/products-items
+    folder: src/pages/products
     create: true
     fields:
       - { name: path, label: Path }
@@ -25,7 +25,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/product/index.md"
+      - file: "src/pages/product-page/index.md"
         label: "Products Page"
         name: "products"
         fields:

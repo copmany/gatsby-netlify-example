@@ -25,7 +25,7 @@ collections:
   - name: "pages"
     label: "Pages"
     files:
-      - file: "src/pages/product-page/index.md"
+      - file: "src/pages/product/index.md"
         label: "Products Page"
         name: "products"
         fields:

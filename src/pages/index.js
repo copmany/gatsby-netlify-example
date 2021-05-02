@@ -1,12 +1,39 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import { Link, graphql } from 'gatsby'
 
-const index = () => {
+const index = ({ data }) => {
+  console.log(data)
+  const products = data.allMarkdownRemark.nodes
   return (
     <>
       Hello world!
-      <p><Link to="/blog">View Blog</Link></p>
+      <p>here is my products i have</p>
+      {products.map((product, i) => (
+        <div className="products" key={i}>
+          <h3>{product.frontmatter.path}</h3>
+          <span>{product.frontmatter.date}</span>
+
+          <p dangerouslySetInnerHTML={{ __html: product.html }}>
+          </p>
+        </div>
+
+      ))}
     </>)
 }
 
 export default index
+
+// export page query
+export const query = graphql`
+  query productPage {
+    allMarkdownRemark {
+      nodes {
+        frontmatter {
+          path
+          date
+        }
+        html
+      }
+    }
+  }
+`

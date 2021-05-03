@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 
-const product = ({ data }) => {
+const Product = ({ data }) => {
   const [formState, setFormState] = useState({
     name: "",
     email: ""
@@ -20,7 +20,7 @@ const product = ({ data }) => {
 
     })
   }
-  const handleSubmi = e => {
+  const handleSubmit = e => {
     fetch("/", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -76,10 +76,11 @@ const product = ({ data }) => {
           <button type="submit">Send</button>
         </p>
       </form>
-    </>)
+    </>
+  )
 }
 
-export default product
+export default Product
 
 // export page query
 export const query = graphql`

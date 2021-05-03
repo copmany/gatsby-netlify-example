@@ -10,11 +10,12 @@ const index = ({ data }) => {
       <p>here is my products i have</p>
       {products.map((product, i) => (
         <div className="products" key={i}>
+          <h3>{product.frontmatter.title}</h3>
           <h3>{product.frontmatter.path}</h3>
           <span>{product.frontmatter.date}</span>
 
-          <p dangerouslySetInnerHTML={{ __html: product.html }}>
-          </p>
+
+
         </div>
 
       ))}
@@ -31,8 +32,9 @@ export const query = graphql`
         frontmatter {
           path
           date
+          title
         }
-        html
+        
       }
     }
   }

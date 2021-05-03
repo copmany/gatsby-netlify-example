@@ -2,6 +2,35 @@ import React from 'react'
 import { Link, graphql } from 'gatsby'
 
 const product = ({ data }) => {
+  const [formState, setFormState] = useSatet({
+    name: "",
+    email: ""
+
+
+  })
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+  const handleChange = e => {
+    setFormState({
+      ...formState,
+      [e.target.name]: e.target.value
+
+    })
+  }
+  const handleSubmi = e => {
+    fetch("/", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formState })
+    })
+      .then(() => alert("Success!"))
+      .catch(error => alert(error));
+
+    e.preventDefault();
+  }
   console.log(data)
   const productdata = data.allMarkdownRemark.nodes
   return (
@@ -30,8 +59,23 @@ const product = ({ data }) => {
         </div>
 
       ))}
+      <h1>Contact Us</h1>
+      <form onSubmit={handleSubmit} name="contact" method="post" data-netlify="true" data-netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="contact" />
+        <p>
+          <label>Name:
+      <input id="name" type="text" name="name" onChange={handleChange} value={formState.name} /></label>
+        </p>
+        <p>
+          <label>Email:
+    <input id="email" type="email" name="email" onChange={handleChange} value={formState.email} />
 
-
+          </label>
+        </p>
+        <p>
+          <button type="submit">Send</button>
+        </p>
+      </form>
     </>)
 }
 

@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Link, graphql } from 'gatsby'
 
 const product = ({ data }) => {
-  const [formState, setFormState] = useSatet({
+  const [formState, setFormState] = useState({
     name: "",
     email: ""
 
